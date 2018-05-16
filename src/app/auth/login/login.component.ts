@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../shared/providers/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,10 @@ export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService
+  ) {
     this.createForm();
   }
 
@@ -18,6 +22,8 @@ export class LoginComponent implements OnInit {
 
   public submitForm(): void {
     console.log('form value', this.loginForm.value);
+    this.authService.login(this.loginForm.value)
+      .subscribe(res => console.log('res', res));
   }
 
   public isInvalid(controlName: string): boolean {
