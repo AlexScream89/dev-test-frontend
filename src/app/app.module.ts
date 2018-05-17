@@ -4,22 +4,34 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.route';
-import { RegistrationComponent } from './auth/registration/registration.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import { LocalStorageModule } from 'angular-2-local-storage';
+import {SessionService} from './core/providers/session.service';
+import {AuthInterceptor} from './core/providers/auth-interceptor';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    RegistrationComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
+    LocalStorageModule.withConfig({
+      prefix: 'dev-test-app',
+      storageType: 'localStorage'
+    }),
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+    SessionService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

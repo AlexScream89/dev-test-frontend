@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../shared/providers/auth.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../shared/providers/auth.service';
+import { SessionService } from '../../core/providers/session.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private sessionService: SessionService
   ) {
     this.createForm();
   }
@@ -23,7 +25,10 @@ export class LoginComponent implements OnInit {
   public submitForm(): void {
     console.log('form value', this.loginForm.value);
     this.authService.login(this.loginForm.value)
-      .subscribe(res => console.log('res', res));
+      .subscribe(res => {
+        console.log(res);
+        this.sessionService.setToken(res['token']);
+      });
   }
 
   public isInvalid(controlName: string): boolean {
@@ -32,8 +37,8 @@ export class LoginComponent implements OnInit {
 
   private createForm(): void {
     this.loginForm = this.fb.group({
-      'userEmail': ['', [Validators.required, Validators.email]],
-      'userPassword': ['', Validators.required]
+      'email': ['', [Validators.required, Validators.email]],
+      'password': ['', Validators.required]
     });
   }
 
