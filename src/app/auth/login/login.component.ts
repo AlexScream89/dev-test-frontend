@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../shared/providers/auth.service';
 import { SessionService } from '../../core/providers/session.service';
+import {
+  AuthService as SocialAuthService,
+  FacebookLoginProvider,
+  GoogleLoginProvider
+} from 'angular5-social-login';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +20,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private sessionService: SessionService
+    private sessionService: SessionService,
+    private socialAuthService: SocialAuthService
   ) {
     this.createForm();
   }
@@ -31,8 +37,23 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  public isInvalid(controlName: string): boolean {
-    return this.loginForm.controls[controlName].touched && this.loginForm.controls[controlName].invalid;
+  public socialSignIn(socialPlatform: string) {
+    let socialPlatformProvider;
+    if (socialPlatform === 'facebook') {
+      socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
+    } else if (socialPlatform === 'google') {
+      socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
+    }
+
+    this.socialAuthService.signIn(socialPlatformProvider).then(
+      (userData) => {
+        console.log(socialPlatform +  'sign in data : ' , userData);
+
+      },
+      err => {
+        console.log('error', err);
+      }
+    );
   }
 
   private createForm(): void {
