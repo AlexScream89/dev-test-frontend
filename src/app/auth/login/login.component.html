@@ -6,7 +6,8 @@
           <label for="userEmail" class="col-sm-4 col-form-label">Email</label>
           <div class="col-sm-8">
             <input
-              [class.invalid]="loginForm.controls['email'].touched && loginForm.controls['email'].invalid"
+              appInputValidation
+              [control]="loginForm.controls['email']"
               type="email"
               formControlName="email"
               id="userEmail"
@@ -20,7 +21,8 @@
           <label for="userPassword" class="col-sm-4 col-form-label">Password</label>
           <div class="col-sm-8">
             <input
-              [class.invalid]="loginForm.controls['password'].touched && loginForm.controls['password'].invalid"
+              appInputValidation
+              [control]="loginForm.controls['password']"
               type="password"
               formControlName="password"
               id="userPassword"

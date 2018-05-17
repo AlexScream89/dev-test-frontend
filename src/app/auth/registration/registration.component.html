@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="col-sm-6">
-      <form class="form-login" [formGroup]="registrationForm" novalidate (ngSubmit)="submitForm()">
+      <form class="form-registration" [formGroup]="registrationForm" novalidate (ngSubmit)="submitForm()">
         <div class="form-group row">
           <label for="firstName" class="col-sm-4 col-form-label">First Name</label>
           <div class="col-sm-8">
@@ -30,7 +30,8 @@
           <label for="userEmail" class="col-sm-4 col-form-label">Email</label>
           <div class="col-sm-8">
             <input
-              [class.invalid]="registrationForm.controls['email'].touched && registrationForm.controls['email'].invalid"
+              appInputValidation
+              [control]="registrationForm.controls['email']"
               type="email"
               formControlName="email"
               id="userEmail"
@@ -44,7 +45,8 @@
           <label for="userPassword" class="col-sm-4 col-form-label">Password</label>
           <div class="col-sm-8">
             <input
-              [class.invalid]="registrationForm.controls['password'].touched && registrationForm.controls['password'].invalid"
+              appInputValidation
+              [control]="registrationForm.controls['password']"
               type="password"
               formControlName="password"
               id="userPassword"
@@ -58,7 +60,8 @@
           <label for="repeatPassword" class="col-sm-4 col-form-label">Confirm Password</label>
           <div class="col-sm-8">
             <input
-              [class.invalid]="registrationForm.controls['repeatPassword'].touched && registrationForm.controls['repeatPassword'].invalid"
+              appInputValidation
+              [control]="registrationForm.controls['repeatPassword']"
               type="password"
               formControlName="repeatPassword"
               id="repeatPassword"

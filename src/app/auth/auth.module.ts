@@ -8,11 +8,13 @@ import { LoginComponent } from './login/login.component';
 import { authRoutes } from './auth.route';
 import { RegistrationComponent } from './registration/registration.component';
 import { AuthService } from './shared/providers/auth.service';
+import { InputValidationDirective } from '../core/directives/input-validation.directive';
 
 @NgModule({
   declarations: [
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    InputValidationDirective
   ],
   imports: [
     CommonModule,
