@@ -7,6 +7,7 @@ import {
   FacebookLoginProvider,
   GoogleLoginProvider
 } from 'angular5-social-login';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private sessionService: SessionService,
-    private socialAuthService: SocialAuthService
+    private socialAuthService: SocialAuthService,
+    private router: Router
   ) {
     this.createForm();
   }
@@ -34,6 +36,7 @@ export class LoginComponent implements OnInit {
       .subscribe(res => {
         console.log(res);
         this.sessionService.setToken(res['token']);
+        this.router.navigate(['/dashboard']);
       });
   }
 
@@ -48,7 +51,8 @@ export class LoginComponent implements OnInit {
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
         console.log(socialPlatform +  'sign in data : ' , userData);
-
+        this.sessionService.setToken(userData['token']);
+        this.router.navigate(['/dashboard']);
       },
       err => {
         console.log('error', err);
