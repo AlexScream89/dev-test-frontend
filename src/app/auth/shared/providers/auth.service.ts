@@ -8,14 +8,21 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  public login(body) {
+  public login(body: Object) {
     return this.http.post(`${ConfigService.basePath}/users/login`, body)
       .pipe(map(response => {
         return response;
       }));
   }
 
-  public registration(body) {
+  public loginWithSocial(body: Object, platform: string) {
+    return this.http.post(`${ConfigService.basePath}/users/login/${platform}`, body)
+      .pipe(map(response => {
+        return response;
+      }));
+  }
+
+  public registration(body: Object) {
     return this.http.post(`${ConfigService.basePath}/users/registration`, body)
       .pipe(map(response => {
         return response;

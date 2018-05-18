@@ -52,7 +52,11 @@ export class LoginComponent implements OnInit {
       (userData) => {
         console.log(socialPlatform +  'sign in data : ' , userData);
         this.sessionService.setToken(userData['token']);
-        this.router.navigate(['/dashboard']);
+        this.authService.loginWithSocial(userData, socialPlatform)
+          .subscribe(res => {
+            console.log('login with social', res);
+            this.router.navigate(['/dashboard']);
+          });
       },
       err => {
         console.log('error', err);
