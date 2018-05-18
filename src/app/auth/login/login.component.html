@@ -1,52 +1,62 @@
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="col-sm-6">
-      <form class="form-login" [formGroup]="loginForm" novalidate (ngSubmit)="submitForm()">
-        <div class="form-group row">
-          <label for="userEmail" class="col-sm-4 col-form-label">Email</label>
-          <div class="col-sm-8">
-            <input
-              appInputValidation
-              [control]="loginForm.controls['email']"
-              type="email"
-              formControlName="email"
-              id="userEmail"
-              class="form-control"
-              placeholder="Email"
-              required
-            >
+      <div class="form-container">
+        <div class="form-header flex">
+          <div>
+            <a routerLink="/auth/login">Log in</a>
+          </div>
+          <div>
+            <a routerLink="/auth/registration">Sign up</a>
           </div>
         </div>
-        <div class="form-group row">
-          <label for="userPassword" class="col-sm-4 col-form-label">Password</label>
-          <div class="col-sm-8">
-            <input
-              appInputValidation
-              [control]="loginForm.controls['password']"
-              type="password"
-              formControlName="password"
-              id="userPassword"
-              class="form-control"
-              placeholder="Password"
-              required
-            >
+        <form class="form-login" [formGroup]="loginForm" novalidate (ngSubmit)="submitForm()">
+          <div class="form-group row">
+            <label for="userEmail" class="col-sm-4 col-form-label">Email</label>
+            <div class="col-sm-8">
+              <input
+                appInputValidation
+                [control]="loginForm.controls['email']"
+                type="email"
+                formControlName="email"
+                id="userEmail"
+                class="form-control"
+                placeholder="Email"
+                required
+              >
+            </div>
           </div>
+          <div class="form-group row">
+            <label for="userPassword" class="col-sm-4 col-form-label">Password</label>
+            <div class="col-sm-8">
+              <input
+                appInputValidation
+                [control]="loginForm.controls['password']"
+                type="password"
+                formControlName="password"
+                id="userPassword"
+                class="form-control"
+                placeholder="Password"
+                required
+              >
+            </div>
+          </div>
+          <div class="text-center">
+            <button class="btn btn-sm btn-default" type="submit">Sign in</button>
+          </div>
+        </form>
+        <div class="form-group row justify-content-md-center">
+          <a>Forgot Password?</a>
         </div>
-        <div class="text-center">
-          <button class="btn btn-sm btn-default" type="submit">Sign in</button>
+        <div class="form-group row justify-content-md-center">
+          <p>OR</p>
         </div>
-      </form>
-      <div class="form-group row justify-content-md-center">
-        <a>Forgot Password?</a>
-      </div>
-      <div class="form-group row justify-content-md-center">
-        <p>OR</p>
-      </div>
-      <div class="form-group row justify-content-md-center">
-        <button class="btn btn-sm btn-default" (click)="socialSignIn('google')">Sign in with Google</button>
-      </div>
-      <div class="form-group row justify-content-md-center">
-        <button class="btn btn-sm btn-default" (click)="socialSignIn('facebook')">Sign in with Facebook</button>
+        <div class="form-group justify-content-md-center">
+          <button class="btn btn-sm btn-default btn-block" (click)="socialSignIn('google')">Sign in with Google</button>
+        </div>
+        <div class="form-group justify-content-md-center">
+          <button class="btn btn-sm btn-default btn-block" (click)="socialSignIn('facebook')">Sign in with Facebook</button>
+        </div>
       </div>
     </div>
   </div>
