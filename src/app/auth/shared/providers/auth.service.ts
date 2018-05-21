@@ -28,4 +28,11 @@ export class AuthService {
         return response;
       }));
   }
+
+  public forgotPassword(body: Object) {
+    return this.http.post(`${ConfigService.basePath}/users/forgot-password`, body)
+      .pipe(map(response => {
+        return response;
+      }));
+  }
 }

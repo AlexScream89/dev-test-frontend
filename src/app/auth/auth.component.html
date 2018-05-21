@@ -13,9 +13,10 @@
 
         <app-login *ngIf="pageName === 'login'"></app-login>
         <app-registration *ngIf="pageName === 'registration'"></app-registration>
+        <app-forgot-password *ngIf="pageName === 'forgot-password'"></app-forgot-password>
 
-        <div class="form-group row justify-content-md-center">
-          <a>Forgot Password?</a>
+        <div class="form-group row justify-content-md-center" *ngIf="pageName !== 'forgot-password'">
+          <a routerLink="/auth/forgot-password">Forgot Password?</a>
         </div>
         <div class="form-group row justify-content-md-center">
           <p>OR</p>

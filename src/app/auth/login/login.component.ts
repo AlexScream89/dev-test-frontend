@@ -26,6 +26,11 @@ export class LoginComponent implements OnInit {
 
   public submitForm(): void {
     console.log('form value', this.loginForm.value);
+
+    if (this.loginForm.invalid) {
+      return;
+    }
+
     this.authService.login(this.loginForm.value)
       .subscribe(res => {
         console.log(res);

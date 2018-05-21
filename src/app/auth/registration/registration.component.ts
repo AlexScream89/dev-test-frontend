@@ -22,6 +22,11 @@ export class RegistrationComponent implements OnInit {
 
   public submitForm(): void {
     console.log('form value', this.registrationForm.value);
+
+    if (this.registrationForm.invalid) {
+      return;
+    }
+
     this.authService.registration(this.registrationForm.value)
       .subscribe(res => {
         console.log('res', res);
