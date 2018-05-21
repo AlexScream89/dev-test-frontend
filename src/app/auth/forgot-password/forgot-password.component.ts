@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../shared/providers/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-forgot-password',
@@ -13,7 +14,8 @@ export class ForgotPasswordComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
     this.createForm();
   }
@@ -30,6 +32,7 @@ export class ForgotPasswordComponent implements OnInit {
 
     this.authService.forgotPassword(this.forgotPasswordForm.value)
       .subscribe(res => {
+        this.router.navigate(['/auth', 'login']);
         console.log('res', res);
       });
   }
