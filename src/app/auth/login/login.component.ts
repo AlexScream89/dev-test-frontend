@@ -2,11 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../shared/providers/auth.service';
 import { SessionService } from '../../core/providers/session.service';
-import {
-  AuthService as SocialAuthService,
-  FacebookLoginProvider,
-  GoogleLoginProvider
-} from 'angular5-social-login';
 import { Router } from '@angular/router';
 
 @Component({
@@ -22,7 +17,6 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private sessionService: SessionService,
-    private socialAuthService: SocialAuthService,
     private router: Router
   ) {
     this.createForm();
@@ -38,30 +32,6 @@ export class LoginComponent implements OnInit {
         this.sessionService.setToken(res['token']);
         this.router.navigate(['/dashboard']);
       });
-  }
-
-  public socialSignIn(socialPlatform: string) {
-    let socialPlatformProvider;
-    if (socialPlatform === 'facebook') {
-      socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
-    } else if (socialPlatform === 'google') {
-      socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
-    }
-
-    this.socialAuthService.signIn(socialPlatformProvider).then(
-      (userData) => {
-        console.log(socialPlatform +  'sign in data : ' , userData);
-        this.sessionService.setToken(userData['token']);
-        this.authService.loginWithSocial(userData, socialPlatform)
-          .subscribe(res => {
-            console.log('login with social', res);
-            this.router.navigate(['/dashboard']);
-          });
-      },
-      err => {
-        console.log('error', err);
-      }
-    );
   }
 
   private createForm(): void {

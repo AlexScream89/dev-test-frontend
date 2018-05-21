@@ -9,9 +9,11 @@ import { authRoutes } from './auth.route';
 import { RegistrationComponent } from './registration/registration.component';
 import { AuthService } from './shared/providers/auth.service';
 import { InputValidationDirective } from '../core/directives/input-validation.directive';
+import { AuthComponent } from './auth.component';
 
 @NgModule({
   declarations: [
+    AuthComponent,
     LoginComponent,
     RegistrationComponent,
     InputValidationDirective

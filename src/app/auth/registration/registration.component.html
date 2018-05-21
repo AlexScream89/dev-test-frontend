@@ -1,95 +1,75 @@
-<div class="container">
-  <div class="row justify-content-md-center">
-    <div class="col-sm-6">
-      <div class="form-container">
-        <form class="form-registration" [formGroup]="registrationForm" novalidate (ngSubmit)="submitForm()">
-          <div class="form-group row">
-            <label for="firstName" class="col-sm-4 col-form-label">First Name</label>
-            <div class="col-sm-8">
-              <input
-                type="text"
-                formControlName="firstName"
-                id="firstName"
-                class="form-control"
-                placeholder="First Name"
-              >
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="lastName" class="col-sm-4 col-form-label">Last Name</label>
-            <div class="col-sm-8">
-              <input
-                type="text"
-                formControlName="lastName"
-                id="lastName"
-                class="form-control"
-                placeholder="Last Name"
-              >
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="userEmail" class="col-sm-4 col-form-label">Email</label>
-            <div class="col-sm-8">
-              <input
-                appInputValidation
-                [control]="registrationForm.controls['email']"
-                type="email"
-                formControlName="email"
-                id="userEmail"
-                class="form-control"
-                placeholder="Email"
-                required
-              >
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="userPassword" class="col-sm-4 col-form-label">Password</label>
-            <div class="col-sm-8">
-              <input
-                appInputValidation
-                [control]="registrationForm.controls['password']"
-                type="password"
-                formControlName="password"
-                id="userPassword"
-                class="form-control"
-                placeholder="Password"
-                required
-              >
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="repeatPassword" class="col-sm-4 col-form-label">Confirm Password</label>
-            <div class="col-sm-8">
-              <input
-                appInputValidation
-                [control]="registrationForm.controls['repeatPassword']"
-                type="password"
-                formControlName="repeatPassword"
-                id="repeatPassword"
-                class="form-control"
-                placeholder="Password"
-                required
-              >
-            </div>
-          </div>
-          <div class="text-center">
-            <button class="btn btn-sm btn-default" type="submit">Sign in</button>
-          </div>
-        </form>
-        <div class="form-group row justify-content-md-center">
-          <a>Forgot Password?</a>
-        </div>
-        <div class="form-group row justify-content-md-center">
-          <p>OR</p>
-        </div>
-        <div class="form-group justify-content-md-center">
-          <button class="btn btn-sm btn-default btn-block" type="submit">Sign in with Google</button>
-        </div>
-        <div class="form-group justify-content-md-center">
-          <button class="btn btn-sm btn-default btn-block" type="submit">Sign in with Facebook</button>
-        </div>
-      </div>
+<form class="form-registration" [formGroup]="registrationForm" novalidate (ngSubmit)="submitForm()">
+  <div class="form-group row">
+    <label for="firstName" class="col-sm-4 col-form-label">First Name</label>
+    <div class="col-sm-8">
+      <input
+        type="text"
+        formControlName="firstName"
+        id="firstName"
+        class="form-control"
+        placeholder="First Name"
+      >
     </div>
   </div>
-</div>
+  <div class="form-group row">
+    <label for="lastName" class="col-sm-4 col-form-label">Last Name</label>
+    <div class="col-sm-8">
+      <input
+        type="text"
+        formControlName="lastName"
+        id="lastName"
+        class="form-control"
+        placeholder="Last Name"
+      >
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="userEmail" class="col-sm-4 col-form-label">Email</label>
+    <div class="col-sm-8">
+      <input
+        appInputValidation
+        [control]="registrationForm.controls['email']"
+        type="email"
+        formControlName="email"
+        id="userEmail"
+        class="form-control"
+        placeholder="Email"
+        required
+      >
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="userPassword" class="col-sm-4 col-form-label">Password</label>
+    <div class="col-sm-8">
+      <input
+        appInputValidation
+        [control]="registrationForm.controls['password']"
+        type="password"
+        formControlName="password"
+        id="userPassword"
+        class="form-control"
+        placeholder="Password"
+        required
+      >
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="repeatPassword" class="col-sm-4 col-form-label">Confirm Password</label>
+    <div class="col-sm-8">
+      <input
+        appInputValidation
+        [control]="registrationForm.controls['repeatPassword']"
+        type="password"
+        formControlName="repeatPassword"
+        id="repeatPassword"
+        class="form-control"
+        placeholder="Password"
+        required
+      >
+    </div>
+  </div>
+  <div class="text-center">
+    <button class="btn btn-sm btn-default" type="submit">Sign up</button>
+  </div>
+</form>
 
