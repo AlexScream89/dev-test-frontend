@@ -8,8 +8,17 @@ export class DashboardService {
 
   constructor(private http: HttpClient) {}
 
-  getDashboard() {
+  public getDashboard() {
     return this.http.get(`${ConfigService.basePath}/dashboard`)
-      .pipe(map(res => res));
+      .pipe(map(response => {
+        return response;
+      }));
+  }
+
+  public getTrips() {
+    return this.http.get(`${ConfigService.basePath}/trips`)
+      .pipe(map(response => {
+        return response;
+      }));
   }
 }

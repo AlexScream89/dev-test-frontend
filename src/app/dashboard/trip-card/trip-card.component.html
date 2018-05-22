@@ -1,3 +1,13 @@
-<p>
-  trip-card works!
-</p>
+<div class="trip-block" (click)="editCard()">
+  <p class="trip-title">{{trip.title}}</p>
+  <div class="places">
+    <div class="place" *ngFor="let place of trip.places">
+      <div class="place-image">
+        <img [src]="place.imageUrl" alt="place">
+      </div>
+      <p>{{place.country}}</p>
+      <p>{{place.city}}</p>
+      <p>{{place.month}}</p>
+    </div>
+  </div>
+</div>

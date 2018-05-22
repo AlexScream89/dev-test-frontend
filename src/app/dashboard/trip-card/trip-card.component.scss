@@ -1,0 +1,22 @@
+.trip-block {
+  background-color: #FFF;
+  padding: 20px;
+  cursor: pointer;
+  .trip-title {
+    margin-bottom: 25px;
+    font-size: 20px;
+  }
+  .places {
+    display: flex;
+    .place {
+      margin-right: 20px;
+      .place-image {
+        width: 100px;
+        margin-bottom: 20px;
+        img {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-trip-card',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TripCardComponent implements OnInit {
 
+  @Input() trip;
+
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  public editCard(): void {
+    console.log('edit sard');
   }
 
 }

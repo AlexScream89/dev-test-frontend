@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from './shared/providers/dashboard.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,13 +9,15 @@ import { DashboardService } from './shared/providers/dashboard.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private dashboardService: DashboardService) { }
+  public trips;
 
-  ngOnInit() {
-    this.dashboardService.getDashboard()
-      .subscribe(res => {
-        console.log('dashboard page', res);
-      });
+  constructor(
+    private dashboardService: DashboardService,
+    private route: ActivatedRoute
+  ) {
+    this.trips = this.route.snapshot.data['trips']['data'];
   }
+
+  ngOnInit() {}
 
 }

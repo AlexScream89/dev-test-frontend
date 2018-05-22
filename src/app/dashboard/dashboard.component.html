@@ -7,8 +7,13 @@
     <div class="col-sm-9">
       <div class="main-block">
         <button class="btn btn-light btn-block">Add New Trip</button>
-        <div class="cards-block">
-          <app-trip-card></app-trip-card>
+        <div class="no-cards-block" *ngIf="trips.length === 0">
+          <p>No trips yet</p>
+        </div>
+        <div class="cards-block" *ngIf="trips.length > 0">
+          <div class="card-block" *ngFor="let trip of trips">
+            <app-trip-card [trip]="trip"></app-trip-card>
+          </div>
         </div>
       </div>
     </div>
