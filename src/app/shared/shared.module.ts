@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
+import { InputValidationDirective } from '../core/directives/input-validation.directive';
 
 @NgModule({
   imports: [
@@ -11,11 +12,13 @@ import { HeaderComponent } from './header/header.component';
   ],
   declarations: [
     SidebarComponent,
-    HeaderComponent
+    HeaderComponent,
+    InputValidationDirective
   ],
   exports: [
     SidebarComponent,
-    HeaderComponent
+    HeaderComponent,
+    InputValidationDirective
   ]
 })
 export class SharedModule { }

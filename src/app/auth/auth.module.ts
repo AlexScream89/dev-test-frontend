@@ -8,16 +8,15 @@ import { LoginComponent } from './login/login.component';
 import { authRoutes } from './auth.route';
 import { RegistrationComponent } from './registration/registration.component';
 import { AuthService } from './shared/providers/auth.service';
-import { InputValidationDirective } from '../core/directives/input-validation.directive';
 import { AuthComponent } from './auth.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
     AuthComponent,
     LoginComponent,
     RegistrationComponent,
-    InputValidationDirective,
     ForgotPasswordComponent
   ],
   imports: [
@@ -25,7 +24,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     RouterModule.forChild(authRoutes),
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   providers: [AuthService],
   bootstrap: []

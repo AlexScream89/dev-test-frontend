@@ -6,14 +6,19 @@ import { settingsRoutes } from './settings.route';
 import { SharedModule } from '../shared/shared.module';
 import { SettingsService } from './shared/providers/settings.service';
 import { SettingsResolver } from './shared/providers/settings.resolver';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(settingsRoutes),
+    FormsModule,
+    ReactiveFormsModule,
     SharedModule
   ],
-  declarations: [SettingsComponent],
+  declarations: [
+    SettingsComponent
+  ],
   providers: [
     SettingsService,
     SettingsResolver
