@@ -28,7 +28,9 @@ export class AuthComponent implements OnInit {
   ngOnInit() {
     this.route.url
       .subscribe(url => {
-        this.pageName = url[0].path;
+        if (url[0]) {
+          this.pageName = url[0].path;
+        }
       });
   }
 

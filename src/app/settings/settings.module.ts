@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { SettingsComponent } from './settings.component';
 import { RouterModule } from '@angular/router';
 import { settingsRoutes } from './settings.route';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(settingsRoutes)
+    RouterModule.forChild(settingsRoutes),
+    SharedModule
   ],
   declarations: [SettingsComponent]
 })
