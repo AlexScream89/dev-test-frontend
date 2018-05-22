@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-settings',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsComponent implements OnInit {
 
-  constructor() { }
+  public user: Object;
+
+  constructor(private route: ActivatedRoute) {
+    this.user = this.route.snapshot.data['user']['data'];
+  }
 
   ngOnInit() {
   }

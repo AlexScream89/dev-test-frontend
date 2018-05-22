@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
       .subscribe(res => {
         console.log(res);
         this.sessionService.setToken(res['token']);
+        this.sessionService.setUserData(res['data']);
         this.router.navigate(['/dashboard']);
       });
   }

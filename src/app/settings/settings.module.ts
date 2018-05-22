@@ -4,6 +4,8 @@ import { SettingsComponent } from './settings.component';
 import { RouterModule } from '@angular/router';
 import { settingsRoutes } from './settings.route';
 import { SharedModule } from '../shared/shared.module';
+import { SettingsService } from './shared/providers/settings.service';
+import { SettingsResolver } from './shared/providers/settings.resolver';
 
 @NgModule({
   imports: [
@@ -11,6 +13,10 @@ import { SharedModule } from '../shared/shared.module';
     RouterModule.forChild(settingsRoutes),
     SharedModule
   ],
-  declarations: [SettingsComponent]
+  declarations: [SettingsComponent],
+  providers: [
+    SettingsService,
+    SettingsResolver
+  ]
 })
 export class SettingsModule { }

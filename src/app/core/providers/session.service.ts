@@ -15,4 +15,12 @@ export class SessionService {
   public getToken(): string {
     return this.localStorageService.get('token');
   }
+
+  public setUserData(userData: Object): void {
+    this.localStorageService.set('userData', userData);
+  }
+
+  public getUserData(): Object {
+    return this.localStorageService.get('userData');
+  }
 }
