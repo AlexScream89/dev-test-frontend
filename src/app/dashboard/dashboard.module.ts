@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { dashboardRoutes } from './dashboard.route';
 import { DashboardService } from './shared/providers/dashboard.service';
 import { SharedModule } from '../shared/shared.module';
+import { TripCardComponent } from './trip-card/trip-card.component';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule
   ],
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    TripCardComponent
   ],
   providers: [DashboardService]
 })
