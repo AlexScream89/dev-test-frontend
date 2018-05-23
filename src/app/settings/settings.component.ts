@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SettingsService } from './shared/providers/settings.service';
 import { User } from '../core/models/user.model';
+import {ValidatorService} from '../core/providers/validator.service';
 
 @Component({
   selector: 'app-settings',
@@ -30,7 +31,6 @@ export class SettingsComponent implements OnInit {
 
   public submitForm(): void {
     if (this.editUserForm.invalid) {
-      console.log('invalid', this.editUserForm);
       return;
     }
 
@@ -56,6 +56,8 @@ export class SettingsComponent implements OnInit {
       'email': [this.user.email, [Validators.required, Validators.email]],
       'password': [this.user.password],
       'repeatPassword': ['']
+    }, {
+        validator: ValidatorService.matchPasswords
     });
   }
 
