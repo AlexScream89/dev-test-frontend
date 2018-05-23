@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from './shared/providers/dashboard.service';
 import { ActivatedRoute } from '@angular/router';
+import { Trip } from '../core/models/trip.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,13 +10,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  public trips;
+  public trips: Trip;
 
   constructor(
     private dashboardService: DashboardService,
     private route: ActivatedRoute
   ) {
-    this.trips = this.route.snapshot.data['trips']['data'];
+    this.trips = this.route.snapshot.data['trips'];
   }
 
   ngOnInit() {}
