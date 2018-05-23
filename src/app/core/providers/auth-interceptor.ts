@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { SessionService } from './session.service';
+import { Observable } from 'rxjs';
+import 'rxjs-compat/add/operator/do';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -9,7 +11,7 @@ export class AuthInterceptor implements HttpInterceptor {
     private sessionService: SessionService
   ) {}
 
-  intercept(req: HttpRequest<any>, next: HttpHandler) {
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // Get the auth token from the service.
     const authToken = this.sessionService.getToken();
 
@@ -21,9 +23,18 @@ export class AuthInterceptor implements HttpInterceptor {
       });
 
       // send cloned request with header to the next handler.
-      return next.handle(authReq);
+      return next.handle(authReq).do(null, err => this.handle401(err));
     }
 
     return next.handle(req);
+  }
+
+  private handle401(err: any): void {
+    if (err instanceof HttpErrorResponse) {
+      if (err.status === 401) {
+        this.sessionService.setToken(null);
+        this.sessionService.setUserData(null);
+      }
+    }
   }
 }

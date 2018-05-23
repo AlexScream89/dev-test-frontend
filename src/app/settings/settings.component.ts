@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SettingsService } from './shared/providers/settings.service';
 import { User } from '../core/models/user.model';
@@ -16,6 +16,7 @@ export class SettingsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private fb: FormBuilder,
     private settingsService: SettingsService
   ) {
@@ -35,6 +36,10 @@ export class SettingsComponent implements OnInit {
 
     console.log(this.editUserForm.value);
     this.updateUser(this.editUserForm.value);
+  }
+
+  public backToDashboard(): void {
+    this.router.navigate(['/dashboard']);
   }
 
   private updateUser(data: Object): void {
