@@ -6,9 +6,9 @@
     </div>
     <div class="col-sm-9">
       <div class="main-block">
-        <button class="btn btn-light btn-block">Add New Trip</button>
+        <button class="btn btn-light btn-block" routerLink="/trip">Add New Trip</button>
         <div class="no-cards-block" *ngIf="trips.length === 0">
-          <p>No trips yet</p>
+          <h3 class="text-center">No trips yet</h3>
         </div>
         <div class="cards-block" *ngIf="trips.length > 0">
           <div class="card-block" *ngFor="let trip of trips">

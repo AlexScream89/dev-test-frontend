@@ -10,7 +10,7 @@ import { Trip } from '../core/models/trip.model';
 })
 export class DashboardComponent implements OnInit {
 
-  public trips: Trip;
+  public trips: Trip[];
 
   constructor(
     private dashboardService: DashboardService,
