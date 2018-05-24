@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Trip } from '../../core/models/trip.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-trip-card',
@@ -10,12 +11,12 @@ export class TripCardComponent implements OnInit {
 
   @Input() trip: Trip;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {}
 
   public editCard(): void {
-    console.log('edit sard');
+    this.router.navigate(['/trip', this.trip.id, 'edit']);
   }
 
 }

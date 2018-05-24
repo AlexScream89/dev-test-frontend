@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 import { tripRoutes } from './trip.router';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TripService } from './shared/providers/trip.service';
+import { TripResolver } from './shared/providers/trip.resolver';
 
 @NgModule({
   imports: [
@@ -16,6 +18,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   declarations: [
     TripComponent
+  ],
+  providers: [
+    TripService,
+    TripResolver
   ]
 })
 export class TripModule { }
