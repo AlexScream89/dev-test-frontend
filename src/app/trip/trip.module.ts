@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TripService } from './shared/providers/trip.service';
 import { TripResolver } from './shared/providers/trip.resolver';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { TripResolver } from './shared/providers/trip.resolver';
     RouterModule.forChild(tripRoutes),
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   declarations: [
     TripComponent

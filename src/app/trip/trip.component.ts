@@ -3,7 +3,8 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Trip } from '../core/models/trip.model';
 import { TripService } from './shared/providers/trip.service';
-import {Place} from '../core/models/place.model';
+import { Place } from '../core/models/place.model';
+import { HelperService } from '../core/providers/helper.service';
 
 @Component({
   selector: 'app-trip',
@@ -20,7 +21,8 @@ export class TripComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private tripService: TripService
+    private tripService: TripService,
+    private helperService: HelperService
   ) {
     this.trip = this.route.snapshot.data['trip'];
     console.log('trip', this.trip);
@@ -39,11 +41,17 @@ export class TripComponent implements OnInit {
   }
 
   public submitForm(): void {
+    this.tripForm.value.places = this.tripForm.value.places.map(place => {
+      return {
+        ...place,
+        beginAt: this.helperService.prepareDate(place.beginAt),
+        endAt: this.helperService.prepareDate(place.endAt)
+      };
+    });
+    console.log('form', this.tripForm.value);
     if (this.tripForm.invalid) {
       return;
     }
-
-    console.log('form', this.tripForm.value);
   }
 
   public fileUpload(event): void {
@@ -72,8 +80,8 @@ export class TripComponent implements OnInit {
     return this.fb.group({
       'country': [place ? place.country : '', [Validators.required]],
       'city': [place ? place.city : '', [Validators.required]],
-      'beginAt': ['', [Validators.required]],
-      'endAt': ['', [Validators.required]]
+      'beginAt': [place ? this.helperService.transformDate(place.beginAt) : '', [Validators.required]],
+      'endAt': [place ? this.helperService.transformDate(place.endAt) : '', [Validators.required]]
     });
   }
 
