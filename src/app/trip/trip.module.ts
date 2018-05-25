@@ -7,7 +7,6 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TripService } from './shared/providers/trip.service';
 import { TripResolver } from './shared/providers/trip.resolver';
-import { PlaceComponent } from './place/place.component';
 
 @NgModule({
   imports: [
@@ -18,8 +17,7 @@ import { PlaceComponent } from './place/place.component';
     ReactiveFormsModule
   ],
   declarations: [
-    TripComponent,
-    PlaceComponent
+    TripComponent
   ],
   providers: [
     TripService,

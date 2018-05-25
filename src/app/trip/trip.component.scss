@@ -1,0 +1,20 @@
+.trip-form {
+  .place-container {
+    background-color: #FFF;
+    padding: 40px 100px;
+    .place-title {
+      margin-bottom: 30px;
+      font-size: 18px;
+    }
+  }
+  .form-buttons {
+    background-color: #FFF;
+    padding-bottom: 20px;
+    .buttons-bottom {
+      padding: 0 100px;
+    }
+  }
+  .invalid {
+    border-color: #ff1f11;
+  }
+}

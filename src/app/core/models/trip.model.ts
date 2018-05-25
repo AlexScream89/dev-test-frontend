@@ -3,7 +3,7 @@ import { Place } from './place.model';
 export class Trip {
   public id: string;
   public title: string;
-  public places: Place;
+  public places: Place[];
 
   constructor(data) {
     this.id = data._id;
