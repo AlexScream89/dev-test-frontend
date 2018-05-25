@@ -23,4 +23,11 @@ export class TripService {
         return response;
       }));
   }
+
+  public uploadImage(formData: FormData) {
+    return this.http.post(`${ConfigService.basePath}/trips/image-upload`, formData)
+      .pipe(map(response => {
+        return response;
+      }));
+  }
 }
