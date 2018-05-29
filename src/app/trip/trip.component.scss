@@ -9,6 +9,12 @@
     .dates-container {
       display: flex;
       justify-content: space-between;
+      .date-input-container {
+        display: flex;
+        img {
+          width: 20px;
+        }
+      }
     }
   }
   .form-buttons {

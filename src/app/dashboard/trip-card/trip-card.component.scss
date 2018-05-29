@@ -11,10 +11,14 @@
     .place {
       margin-right: 20px;
       .place-image {
-        width: 100px;
+        display: flex;
         margin-bottom: 20px;
-        img {
-          max-width: 100%;
+        .img-container {
+          width: 100px;
+          margin-right: 20px;
+          img {
+            max-width: 100%;
+          }
         }
       }
     }

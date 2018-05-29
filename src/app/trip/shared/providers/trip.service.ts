@@ -17,6 +17,13 @@ export class TripService {
       }));
   }
 
+  public createTrip(body: object): Observable<Trip> {
+    return this.http.post(`${ConfigService.basePath}/trips`, body)
+      .pipe(map(response => {
+        return new Trip(response['data']);
+      }));
+  }
+
   public updateTrip(id: string, body: Object) {
     return this.http.patch(`${ConfigService.basePath}/trips/${id}`, body)
       .pipe(map(response => {
@@ -27,7 +34,7 @@ export class TripService {
   public uploadImage(formData: FormData) {
     return this.http.post(`${ConfigService.basePath}/trips/image-upload`, formData)
       .pipe(map(response => {
-        return response;
+        return response['data'];
       }));
   }
 }

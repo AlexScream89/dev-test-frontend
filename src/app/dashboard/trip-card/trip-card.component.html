@@ -3,7 +3,9 @@
   <div class="places">
     <div class="place" *ngFor="let place of trip.places">
       <div class="place-image">
-        <img [src]="place.imageUrl" alt="place">
+        <div class="img-container" *ngFor="let img of place.imageUrl | slice:0:1">
+          <img [src]="img | imageLink" alt="place">
+        </div>
       </div>
       <p>{{place.country}}</p>
       <p>{{place.city}}</p>

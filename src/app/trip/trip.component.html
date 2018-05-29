@@ -61,29 +61,37 @@
                 <div class="col-sm-8">
                   <div class="row dates-container">
                     <div class="col-sm-5">
-                      <input
-                        class="form-control"
-                        placeholder="yyyy-mm-dd"
-                        name="dp"
-                        formControlName="beginAt"
-                        ngbDatepicker
-                        #d="ngbDatepicker"
-                      >
-                      <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"></button>
+                      <div class="date-input-container">
+                        <input
+                          class="form-control"
+                          placeholder="yyyy-mm-dd"
+                          name="dp"
+                          formControlName="beginAt"
+                          ngbDatepicker
+                          #d="ngbDatepicker"
+                        >
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                            <img src="../../assets/images/calendar-icon.svg">
+                          </button>
+                        </div>
                       </div>
                     </div>
                     <div class="col-sm-5">
-                      <input
-                        class="form-control"
-                        placeholder="yyyy-mm-dd"
-                        name="dp"
-                        formControlName="endAt"
-                        ngbDatepicker
-                        #d2="ngbDatepicker"
-                      >
-                      <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" (click)="d2.toggle()" type="button"></button>
+                      <div class="date-input-container">
+                        <input
+                          class="form-control"
+                          placeholder="yyyy-mm-dd"
+                          name="dp"
+                          formControlName="endAt"
+                          ngbDatepicker
+                          #d2="ngbDatepicker"
+                        >
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-secondary" (click)="d2.toggle()" type="button">
+                            <img src="../../assets/images/calendar-icon.svg">
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -97,7 +105,7 @@
                     id="image"
                     class="form-control"
                     placeholder="City name"
-                    (change)="fileUpload($event)"
+                    (change)="fileUpload($event, i)"
                   >
                 </div>
               </div>

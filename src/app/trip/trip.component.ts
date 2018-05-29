@@ -52,16 +52,25 @@ export class TripComponent implements OnInit {
     if (this.tripForm.invalid) {
       return;
     }
+
+    this.tripService.createTrip(this.tripForm.value).subscribe(res => {
+      console.log('res', res);
+      this.router.navigate(['/dashboard']);
+    });
   }
 
-  public fileUpload(event): void {
+  public fileUpload(event, index): void {
+    console.log('index', index);
+
     const fileList: FileList = event.target.files;
     console.log('file list', fileList);
     if (fileList.length > 0) {
       const file: File = fileList[0];
       const formData: FormData = new FormData();
       formData.append('file', file, file.name);
-      this.tripService.uploadImage(formData).subscribe();
+      this.tripService.uploadImage(formData).subscribe(res => {
+        this.tripForm.value.places[index]['imageUrl'].push(res);
+      });
     }
   }
 
@@ -81,7 +90,8 @@ export class TripComponent implements OnInit {
       'country': [place ? place.country : '', [Validators.required]],
       'city': [place ? place.city : '', [Validators.required]],
       'beginAt': [place ? this.helperService.transformDate(place.beginAt) : '', [Validators.required]],
-      'endAt': [place ? this.helperService.transformDate(place.endAt) : '', [Validators.required]]
+      'endAt': [place ? this.helperService.transformDate(place.endAt) : '', [Validators.required]],
+      'imageUrl': [[]]
     });
   }
 

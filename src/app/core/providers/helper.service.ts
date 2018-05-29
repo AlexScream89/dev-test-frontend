@@ -23,6 +23,6 @@ export class HelperService {
       month: data.month - 1,
       date: data.day
     });
-    return newDate.isValid() ? newDate.format('DD-MM-YYYY') : '';
+    return newDate.isValid() ? newDate.format('YYYY-MM-DD') : '';
   }
 }

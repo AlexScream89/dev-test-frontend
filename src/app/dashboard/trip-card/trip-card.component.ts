@@ -11,7 +11,7 @@ export class TripCardComponent implements OnInit {
 
   @Input() trip: Trip;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   ngOnInit() {}
 

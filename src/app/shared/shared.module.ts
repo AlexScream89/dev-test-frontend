@@ -4,6 +4,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { InputValidationDirective } from '../core/directives/input-validation.directive';
+import {ImageLinkPipe} from '../core/pipes/image-link.pipe';
 
 @NgModule({
   imports: [
@@ -13,12 +14,14 @@ import { InputValidationDirective } from '../core/directives/input-validation.di
   declarations: [
     SidebarComponent,
     HeaderComponent,
-    InputValidationDirective
+    InputValidationDirective,
+    ImageLinkPipe
   ],
   exports: [
     SidebarComponent,
     HeaderComponent,
-    InputValidationDirective
+    InputValidationDirective,
+    ImageLinkPipe
   ]
 })
 export class SharedModule { }
